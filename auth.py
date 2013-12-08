@@ -18,4 +18,7 @@ class Auth:
     def logout(self):
         '''Logout the currently logged in user.
         '''
+        '''Is that it ?
+        '''
+        self.is_authed = False
         pass
