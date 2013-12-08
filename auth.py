@@ -18,4 +18,9 @@ class Auth:
     def logout(self):
         '''Logout the currently logged in user.
         '''
-        pass
+        
+        self.is_authed = False;
+        self.user_id = None;
+        
+        
+        
