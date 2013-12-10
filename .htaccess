@@ -1,0 +1,13 @@
+AddHandler cgi-script py
+
+Options +FollowSymLinks
+Options +Indexes
+
+RewriteEngine On
+RewriteBase /~mtahmed/evote
+RewriteRule ^$ index.py
+
+<Files "index.py">
+	AuthType CAS
+	require valid-user
+</Files>
