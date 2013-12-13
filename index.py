@@ -1,31 +1,46 @@
-#!/usr/bin/env python3
+#!/users/mtahmed/bin/python
+import cgitb
+cgitb.enable
 
 import sys
-sys.path.append('/users/mtahmed/.local/lib/python3.2/site-packages')
+sys.path.append('/users/mtahmed/.local/lib/python3.3/site-packages')
 
-import webob
+from pyramid.config   import Configurator
+from pyramid.response import Response
+from pyramid.view     import view_config
+
+'''
 import auth
+'''
 
-def election(environ, start_response):
+@view_config(route_name='main')
+def main(request):
+    response = Response("hello world!")
+    response.content_type = 'text/plain'
+    return response
+
+@view_config(route_name='logout')
+def logout(request):
+    import auth
     a = auth.Auth()
-    logout_button = (
-'''<!DOCTYPE HTML>
-<html>
-<body>
-  [<a href='?logout'>LOGOUT</a>]
-</body>
-</html>
-''')
-    request = webob.Request(environ)
-    response = webob.Response()
-    if 'logout' in request.params:
-        response = a.logout(response)
-    else:
-        response.text = 'Logged in as %s' % a.user_id
-        response.text += logout_button
+    response = Response()
+    return a.logout(response)
 
-    return response(environ, start_response)
+def make_evote_app():
+    '''This function returns a Pyramid WSGI application.
+    '''
+    config = Configurator()
+
+    # Routes
+    config.add_route('main', '')
+    config.add_route('logout', '/logout')
+
+    # Scan decorated config
+    config.scan()
+
+    return config.make_wsgi_app()
 
 if __name__ == '__main__':
     import wsgiref.handlers
-    wsgiref.handlers.CGIHandler().run(election)
+    app = make_evote_app()
+    wsgiref.handlers.CGIHandler().run(make_evote_app())
