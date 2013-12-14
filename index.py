@@ -1,6 +1,4 @@
 #!/users/mtahmed/bin/python
-import cgitb
-cgitb.enable
 
 import sys
 sys.path.append('/users/mtahmed/.local/lib/python3.3/site-packages')
@@ -9,21 +7,26 @@ from pyramid.config   import Configurator
 from pyramid.response import Response
 from pyramid.view     import view_config
 
-'''
 import auth
-'''
 
-@view_config(route_name='main')
+@view_config(route_name='main', renderer='templates/base.jinja2')
 def main(request):
-    response = Response("hello world!")
-    response.content_type = 'text/plain'
-    return response
+    '''View for the main landing page.
+    '''
+    template_data = dict()
+
+    a = auth.Auth()
+    template_data['user_id'] = a.get_user_id()
+
+    return template_data
 
 @view_config(route_name='logout')
 def logout(request):
-    import auth
+    '''View for the logout page. Only redirects to the logout page.
+    '''
     a = auth.Auth()
     response = Response()
+
     return a.logout(response)
 
 def make_evote_app():
@@ -35,8 +38,11 @@ def make_evote_app():
     config.add_route('main', '')
     config.add_route('logout', '/logout')
 
-    # Scan decorated config
+    # Scan decorated config.
     config.scan()
+
+    # Enable jinja2 templating.
+    config.include('pyramid_jinja2')
 
     return config.make_wsgi_app()
 

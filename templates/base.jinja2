@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>evote</title>
+  </head>
+
+  <body>
+    <div style='margin-left: auto; margin-right: auto; width: 800px'>
+      {% block content %}
+      Logged in as {{ user_id }} <a href='logout'>[LOGOUT]</a>
+      {% endblock content %}
+    </div>
+  </body>
+</html>
