@@ -11,6 +11,25 @@ preserving the vote anonymity, keeping it on the server, and implementing some
 way of letting the voter verify their vote and the integerity of the overall
 tally.
 
+## Usage
+
+Simply clone the evote repository:
+
+```bash
+git clone git@github.com:mtahmed/evote.git
+```
+
+Then import from another script and run as a WSGI app:
+
+```python
+import evote
+from wsgiref.simple_server import make_server
+
+app = evote.make_wsgi_app()
+server = make_server('', 8000, app)
+server.serve_forever()
+```
+
 ## Frontend
 
 The frontend right now is intended to be html+javascript pages where users will
@@ -18,8 +37,8 @@ need to login through some trusted authentication provider (CAS in this case).
 
 ## Backend
 
-The backend right now is intended to be python for serving the html+js and MySQL
-as the storage layer.
+The backend right now is intended to be pyramid serving a WSGI app, and
+sqlalchemy with a mysql database as the storage layer.
 
 # License
 
