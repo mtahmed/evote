@@ -11,6 +11,7 @@ preserving the vote anonymity, keeping it on the server, and implementing some
 way of letting the voter verify their vote and the integerity of the overall
 tally.
 
+
 ## Usage
 
 Simply clone the evote repository:
@@ -30,10 +31,14 @@ server = make_server('', 8000, app)
 server.serve_forever()
 ```
 
+Then point your browser to `localhost:8000`.
+
+
 ## Frontend
 
 The frontend right now is intended to be html+javascript pages where users will
 need to login through some trusted authentication provider (CAS in this case).
+
 
 ## Backend
 
