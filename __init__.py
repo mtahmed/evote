@@ -1,13 +1,8 @@
-#!/users/mtahmed/bin/python
-
-import sys
-sys.path.append('/users/mtahmed/.local/lib/python3.3/site-packages')
-
 from pyramid.config   import Configurator
 from pyramid.response import Response
 from pyramid.view     import view_config
 
-import auth
+from . import auth
 
 @view_config(route_name='main', renderer='templates/base.jinja2')
 def main(request):
@@ -15,7 +10,7 @@ def main(request):
     '''
     template_data = dict()
 
-    a = auth.Auth()
+    a = auth.Auth(user_id=request.remote_user)
     template_data['user_id'] = a.get_user_id()
 
     return template_data
@@ -24,12 +19,12 @@ def main(request):
 def logout(request):
     '''View for the logout page. Only redirects to the logout page.
     '''
-    a = auth.Auth()
+    a = auth.Auth(user_id=request.remote_user)
     response = Response()
 
     return a.logout(response)
 
-def make_evote_app():
+def make_wsgi_app():
     '''This function returns a Pyramid WSGI application.
     '''
     config = Configurator()
@@ -45,8 +40,3 @@ def make_evote_app():
     config.include('pyramid_jinja2')
 
     return config.make_wsgi_app()
-
-if __name__ == '__main__':
-    import wsgiref.handlers
-    app = make_evote_app()
-    wsgiref.handlers.CGIHandler().run(make_evote_app())

@@ -1,9 +1,0 @@
-AddHandler cgi-script py
-
-Options +FollowSymLinks
-Options +Indexes
-
-<FilesMatch ".*">
-  AuthType CAS
-  require valid-user
-</FilesMatch>

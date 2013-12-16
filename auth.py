@@ -1,5 +1,3 @@
-import os
-
 class Auth:
     '''This class will provide the voter authentication.
 
@@ -7,11 +5,11 @@ class Auth:
     '''
     CAS_LOGOUT_URL='https://cas.uwaterloo.ca/cas/logout'
 
-    def __init__(self):
-        self.user_id = os.environ['REMOTE_USER']
+    def __init__(self, user_id, is_authed=True):
+        self.user_id = user_id
         # The user is denied if auth fails before they get here so the user must
         # already be authenticated.
-        self.is_authed = True
+        self.is_authed = is_authed
 
     def get_user_id(self):
         return self.user_id
