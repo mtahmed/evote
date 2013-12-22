@@ -9,6 +9,9 @@ def make_wsgi_app():
     '''
     config = Configurator()
     
+    # Static files
+    config.add_static_view(name='static', path='evote:static')
+    
     # Routes
     config.add_route('main', '')
     config.add_route('logout', '/logout')
