@@ -8,13 +8,15 @@ def make_wsgi_app():
     '''This function returns a Pyramid WSGI application.
     '''
     config = Configurator()
-    
+
     # Static files
     config.add_static_view(name='static', path='evote:static')
     
     # Routes
     config.add_route('main', '')
     config.add_route('logout', '/logout')
+    config.add_route('voting', '/voting')
+    config.add_route('create-election', '/create-election')
 
     # Scan decorated config.
     config.scan()
