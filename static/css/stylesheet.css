@@ -1,0 +1,37 @@
+.top-bar {
+    white-space: nowrap; 
+    max-height: 50px; 
+    background-color: #f3f3f3;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    right: 0px; 
+    position: fixed;
+}
+.top-bar div {
+    width: 800px;
+    margin-left: auto; 
+    margin-right: auto; 
+    height: 25px;
+}
+.outer-content {
+    min-height: 500px;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 800px;
+}
+.footer {
+    margin-left: auto; 
+    margin-right: auto;
+    width: 800px;
+}
+
+a { 
+    color: Blue; 
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}

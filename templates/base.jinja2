@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>evote</title>
-  </head>
+    <head>
+    <link rel="stylesheet" href="static/css/stylesheet.css" />
+        <title>evote</title>
+    </head>
+    <body>
+        <div class="top-bar">
+            <div>
+                <div style="width: 30%; float: left;">
+                    <a href='/'>[HOME]</a>
+                </div>
+                <div style="width: 25%; float: left;">
+                {% block title %}{% endblock %}
+                </div>
+                <div style="width: 35%; float: right;">
+                    Logged in as {{ user_id }} <a href='logout'>[LOGOUT]</a>
+                </div>
+            </div>
+                     
+        </div>
 
-  <body>
-    <div style='margin-left: auto; margin-right: auto; width: 800px'>
-      {% block content %}
-      Logged in as {{ user_id }} <a href='logout'>[LOGOUT]</a>
-      {% endblock content %}
-    </div>
-  </body>
+        <br />
+
+        <div class="outer-content">
+            <div id="content">
+            {% block content %}{% endblock content %}
+            </div>
+        </div>
+        <div class="footer">
+            <hr />
+            Copyright (C) 2013 - <a href="https://github.com/mtahmed/evote/blob/master/README.md#license">License</a> 
+        </div>
+    </body>
 </html>
