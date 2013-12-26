@@ -24,8 +24,8 @@ def logout(request):
 
     return a.logout(response)
     
-@view_config(route_name='voting', renderer='templates/voting.jinja2')
-def voting(request):    
+@view_config(route_name='vote', renderer='templates/vote.jinja2')
+def vote(request):    
     '''View for Voting page
     - Answer the available questions
     - Verify the answers

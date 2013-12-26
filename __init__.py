@@ -15,7 +15,7 @@ def make_wsgi_app():
     # Routes
     config.add_route('main', '')
     config.add_route('logout', '/logout')
-    config.add_route('voting', '/voting')
+    config.add_route('vote', '/vote')
     config.add_route('create-election', '/create-election')
 
     # Scan decorated config.
