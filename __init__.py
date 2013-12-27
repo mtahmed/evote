@@ -10,7 +10,7 @@ def make_wsgi_app():
     config = Configurator()
 
     # Static files
-    config.add_static_view(name='static', path='evote:static')
+    config.add_static_view(name='static', path='static')
     
     # Routes
     config.add_route('main', '')
