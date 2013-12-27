@@ -2,13 +2,33 @@
 {% block title %}Create Election{% endblock %}
 
 {% block content %}
-    <p>
-        <br />Create election (this will be an admin page):
-        <br />- this page will provide an interface to add new questions for the ballot,
-        <br />- select voters list 
-        <br />- set vote period ending date/time
-        <br />- add election officers (those who can admin the election)
-        <br />- start election
-        <br />- (To be completed)
-    </p>
+    <div class="two-columns" style="width: 80%;">
+        <div>
+            <div>Title: </div>
+            <div><input class="textfield" type="text" id="txtTitle" /></div>
+        </div>
+        <div>
+            <div>Description: </div>
+            <div><textarea class="textfield" type="text" id="txtDescription" style="min-height: 50px; min-width: 100px;"></textarea></div>
+        </div>
+        <div>
+            <div>Start time of election: </div>
+            <div>
+                Date: <input class="textfield" type="text" id="txtStartDate" style="width: 100px;"/><br />
+                Time: <input class="textfield" type="text" id="txtStartTime" style="width: 80px;" value="00:00"/>
+            </div>
+        </div>
+        <div>
+            <div>End time of election: </div>
+            <div>
+                Date: <input class="textfield" type="text" id="txtEndDate" style="width: 100px;"/><br />
+                Time: <input class="textfield" type="text" id="txtEndTime" style="width: 80px;" value="00:00"/>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div id="divQuestions" class="add-questions">
+    </div>
+    <div id="divAddQuestions"><input type="button" value="Add question" id="btnAddQuestion" onclick="AddQuestion(2)"/></div>
+    <script type="text/javascript" src="static/js/create-election.js" ></script>
 {% endblock content %}

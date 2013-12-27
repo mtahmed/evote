@@ -2,14 +2,17 @@
 
 <html>
     <head>
-    <link rel="stylesheet" href="static/css/stylesheet.css" />
+        <link rel="stylesheet" href="static/css/stylesheet.css" />
+        <link rel="stylesheet" href="static/css/jquery-ui-1.10.3.css" />
+        <script type="text/javascript" src="static/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="static/js/jquery-ui-1.10.3.js"></script>
         <title>evote</title>
     </head>
     <body>
         <div class="top-bar">
             <div>
                 <div style="width: 30%; float: left;">
-                    <a href='/'>[HOME]</a>
+                    <a href=''>[HOME]</a>
                 </div>
                 <div style="width: 25%; float: left;">
                 {% block title %}{% endblock %}
@@ -17,8 +20,7 @@
                 <div style="width: 35%; float: right;">
                     Logged in as {{ user_id }} <a href='logout'>[LOGOUT]</a>
                 </div>
-            </div>
-                     
+            </div>        
         </div>
 
         <br />
